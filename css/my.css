@@ -1,1 +1,16 @@
 /* Here is your custom css styles. */
+
+#articleContent p { 
+	text-indent: 2em; 
+}
+
+#floating-toc-btn .btn-floating{
+	background: #06439C;
+}
+
+/*.chip{
+	background: #06439C !important;
+}*/
+/*.post-statis .statis .count a{
+	color: #06439C;
+}*/
