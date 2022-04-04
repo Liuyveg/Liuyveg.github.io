@@ -454,7 +454,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="锯齿靶标法"><a href="#锯齿靶标法" class="headerlink" title="锯齿靶标法"></a>锯齿靶标法</h1><h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>在进行激光扫描重建三维模型时，不仅要求解出相机的内部参数，相机坐标系与世界坐标系转换的参数也要求解出来。锯齿靶标法利用结构光与锯齿靶相切来获取特征点的坐标值，实现相机的外参标定。</p>
-<p><img src="/images/serration/image-20220404132750664.png" style="zoom:50%;"></p>
+<p><img src="/images/serration/image-20220404132750664.png" style="zoom:40%;"></p>
 <p>本文以旋转式激光扫描为例，图中$O_W-X_WY_WZ_W$是以旋转平台圆心为原点建立的世界坐标系，锯齿靶标放置在移动导轨上并与旋转平台垂直，导轨移动方向为$Z$轴方向。激光垂直照射在锯齿靶标上，即激光平面为$XOZ$平面。通过测量可以得出锯齿靶标相邻齿根之间的距离以及齿顶到齿根的垂直距离。若最下面一个齿根位于原点上，则锯齿靶标上位于激光平面内的所有齿根齿顶的世界坐标都可以得知。</p>
 <p>摄像机拍摄带有激光的锯齿靶标图像，通过检测激光特征点，获取位于齿根齿顶处的像素坐标。导轨向前移动特定的距离，这些特征点的世界坐标依然是明确可知的。通过获取多组特征点数据，利用世界坐标值与像素坐标值以及相机内参，可以求得旋转矩阵与平移矩阵的最优参数，完成外参标定。</p>
 <p><img src="/images/serration/image-20220404134519355.png" style="zoom:50%;"></p>
