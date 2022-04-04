@@ -454,10 +454,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="锯齿靶标法"><a href="#锯齿靶标法" class="headerlink" title="锯齿靶标法"></a>锯齿靶标法</h1><h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>在进行激光扫描重建三维模型时，不仅要求解出相机的内部参数，相机坐标系与世界坐标系转换的参数也要求解出来。锯齿靶标法利用结构光与锯齿靶相切来获取特征点的坐标值，实现相机的外参标定。</p>
-<p><img src="../images/serration/image-20220404132750664.png" style="zoom:50%;"></p>
+<p><img src="/images/serration/image-20220404132750664.png" style="zoom:50%;"></p>
 <p>本文以旋转式激光扫描为例，图中$O_W-X_WY_WZ_W$是以旋转平台圆心为原点建立的世界坐标系，锯齿靶标放置在移动导轨上并与旋转平台垂直，导轨移动方向为$Z$轴方向。激光垂直照射在锯齿靶标上，即激光平面为$XOZ$平面。通过测量可以得出锯齿靶标相邻齿根之间的距离以及齿顶到齿根的垂直距离。若最下面一个齿根位于原点上，则锯齿靶标上位于激光平面内的所有齿根齿顶的世界坐标都可以得知。</p>
 <p>摄像机拍摄带有激光的锯齿靶标图像，通过检测激光特征点，获取位于齿根齿顶处的像素坐标。导轨向前移动特定的距离，这些特征点的世界坐标依然是明确可知的。通过获取多组特征点数据，利用世界坐标值与像素坐标值以及相机内参，可以求得旋转矩阵与平移矩阵的最优参数，完成外参标定。</p>
-<p><img src="../images/serration/image-20220404134519355.png" style="zoom:50%;"></p>
+<p><img src="/images/serration/image-20220404134519355.png" style="zoom:50%;"></p>
 <blockquote>
 <p>锯齿靶标法的难点在于如何检测出图像上的激光特征点，并获取齿根齿顶的坐标。激光线条可以通过<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dangkie/article/details/78996761">Steger</a>算法进行测量，并获得每个激光特征点的法线方向，通过法线方向的变化来检测出齿根齿顶。</p>
 </blockquote>
@@ -468,7 +468,7 @@
 <blockquote>
 <p>将图像横放，是因为我在写激光检测算法时，是将图像从左到右一列一列的进行检测。为了激光线条顺序与检测特征点顺序一致，才进行横放。如果不横放，将检测出的特征点按照行数从小到大排序也可以使其一致。</p>
 </blockquote>
-<p><img src="../images/serration/sq.jpg" style="zoom:30%;"></p>
+<p><img src="/images/serration/sq.jpg" style="zoom:30%;"></p>
 <ol>
 <li>检测图像白光区域</li>
 </ol>
@@ -483,7 +483,7 @@
     bitwise_and(image, image, dst, mask);
     image = dst.clone();
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="../images/serration/image-20220404140659747.png" style="zoom:25%;"></p>
+<p><img src="/images/serration/image-20220404140659747.png" style="zoom:25%;"></p>
 <ol>
 <li>激光检测</li>
 </ol>
@@ -571,11 +571,11 @@ void Steger::FindCenterLine(vector&lt;Point2f&gt;&amp; Pts, vector&lt;Vec4f&gt;&
         }
     }
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<p><img src="../images/serration/image-20220404142443137.png" style="zoom:28%;"></p>
+<p><img src="/images/serration/image-20220404142443137.png" style="zoom:28%;"></p>
 <blockquote>
 <p>为了有效检测出齿根齿顶点，我们将过滤掉法线方向过大的点。</p>
 </blockquote>
-<p><img src="../images/serration/image-20220404142822833.png" style="zoom:28%;"></p>
+<p><img src="/images/serration/image-20220404142822833.png" style="zoom:28%;"></p>
 <ol>
 <li>齿根齿顶检测</li>
 </ol>
@@ -618,7 +618,7 @@ void Steger::FindCenterLine(vector&lt;Point2f&gt;&amp; Pts, vector&lt;Vec4f&gt;&
 	}
 	return Pt;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="../images/serration/image-20220404143938489.png" style="zoom:30%;"></p>
+<p><img src="/images/serration/image-20220404143938489.png" style="zoom:30%;"></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.王云飞. 旋转扫描线结构光三维测量系统[D].长安大学,2020.DOI:10.26976/d.cnki.gchau.2020.001380.</p>
 
                 
