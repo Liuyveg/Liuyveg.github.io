@@ -6,7 +6,7 @@
   <link href="https://liuyveg.github.io/atom.xml" rel="self"/>
   
   <link href="https://liuyveg.github.io/"/>
-  <updated>2022-04-01T12:10:55.706Z</updated>
+  <updated>2022-04-04T06:40:32.274Z</updated>
   <id>https://liuyveg.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>LaserScannar</title>
+    <title>锯齿靶标法标定激光平面</title>
+    <link href="https://liuyveg.github.io/2022/04/04/serration/"/>
+    <id>https://liuyveg.github.io/2022/04/04/serration/</id>
+    <published>2022-04-04T05:02:14.000Z</published>
+    <updated>2022-04-04T06:40:32.274Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;锯齿靶标法&quot;&gt;&lt;a href=&quot;#锯齿靶标法&quot; class=&quot;headerlink&quot; title=&quot;锯齿靶标法&quot;&gt;&lt;/a&gt;锯齿靶标法&lt;/h1&gt;&lt;h2 id=&quot;Principle&quot;&gt;&lt;a href=&quot;#Principle&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/categories/3D-Reconstruction/"/>
+    
+    
+    <category term="Laser Scannar" scheme="https://liuyveg.github.io/tags/Laser-Scannar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线激光扫描三维重建</title>
     <link href="https://liuyveg.github.io/2022/03/30/laserscannar/"/>
     <id>https://liuyveg.github.io/2022/03/30/laserscannar/</id>
     <published>2022-03-30T10:25:42.000Z</published>
-    <updated>2022-04-01T12:10:55.706Z</updated>
+    <updated>2022-04-04T05:08:02.877Z</updated>
     
     
       
@@ -37,9 +62,9 @@
     <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/categories/3D-Reconstruction/"/>
     
     
-    <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/tags/3D-Reconstruction/"/>
-    
     <category term="Laser Scannar" scheme="https://liuyveg.github.io/tags/Laser-Scannar/"/>
+    
+    <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/tags/3D-Reconstruction/"/>
     
   </entry>
   
