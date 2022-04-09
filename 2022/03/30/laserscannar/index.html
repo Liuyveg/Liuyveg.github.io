@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="线激光扫描三维重建, Liuyveg">
-    <meta name="description" content="Laser Scannar for 3D-ReconstructionPrinciple已知相机的内参矩阵$ K $以及世界坐标系到相机坐标系的外参矩阵$ R, T $，由一个三维世界坐标点可以计算出该点对应的像素坐标。但反过来，由一个点的">
+    <meta name="description" content="线激光扫描三维重建Principle已知相机的内参矩阵以及世界坐标系到相机坐标系的外参矩阵，由一个三维世界坐标点可以计算出该点对应的像素坐标。但反过来，由一个点的像素坐标却无法求得该点的世界坐标。因为在计算像素坐标时，可以通过下述公式求出像">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,12 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Laser-Scannar/">
-                                <span class="chip bg-color">Laser Scannar</span>
+                            <a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/">
+                                <span class="chip bg-color">三维重建</span>
                             </a>
                         
-                            <a href="/tags/3D-Reconstruction/">
-                                <span class="chip bg-color">3D-Reconstruction</span>
+                            <a href="/tags/%E7%BA%BF%E6%BF%80%E5%85%89/">
+                                <span class="chip bg-color">线激光</span>
                             </a>
                         
                     </div>
@@ -398,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/3D-Reconstruction/" class="post-category">
-                                3D-Reconstruction
+                            <a href="/categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" class="post-category">
+                                三维重建
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-04-04
+                    2022-04-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    5.1k
+                    3.5k
                 </div>
                 
 
@@ -455,7 +455,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Laser-Scannar-for-3D-Reconstruction"><a href="#Laser-Scannar-for-3D-Reconstruction" class="headerlink" title="Laser Scannar for 3D-Reconstruction"></a>Laser Scannar for 3D-Reconstruction</h1><h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>已知相机的内参矩阵$ K $以及世界坐标系到相机坐标系的外参矩阵$ R, T $，由一个三维世界坐标点可以计算出该点对应的像素坐标。但反过来，由一个点的像素坐标却无法求得该点的世界坐标。因为在计算像素坐标时，可以通过下述公式求出像素点的齐次坐标时$ p=[x, y, z] $，再同除以一个比例因子$ z $才能得到像素点的二维坐标$ p=[u, v] $。然而反过来，在计算世界坐标时，比例因子是未知的，只能计算得到$ P’_W=R^-(K^-p)-T $，但该点一定不是真实点，与真实值相差一个系数，因此点的深度信息是无法得知的，但可以知道真实点一定在相机中心$P_{CO}$与$ P’_W $ 的直线上，所以还需要其他深度信息才能得到真实点坐标。</p>
+                <h1 id="线激光扫描三维重建"><a href="#线激光扫描三维重建" class="headerlink" title="线激光扫描三维重建"></a>线激光扫描三维重建</h1><h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>已知相机的内参矩阵以及世界坐标系到相机坐标系的外参矩阵，由一个三维世界坐标点可以计算出该点对应的像素坐标。但反过来，由一个点的像素坐标却无法求得该点的世界坐标。因为在计算像素坐标时，可以通过下述公式求出像素点的齐次坐标时$ p=[x, y, z] $，再同除以一个比例因子$ z $才能得到像素点的二维坐标$ p=[u, v] $。然而反过来，在计算世界坐标时，比例因子是未知的，只能计算得到$ P’_W=R^{-1}(K^{-1}P-T) $，但该点一定不是真实点，与真实值相差一个系数，因此点的深度信息是无法得知的，但可以知道真实点一定在相机中心$P_{CO}$与$ P’_W $ 的直线上，所以还需要其他深度信息才能得到真实点坐标。</p>
 <script type="math/tex; mode=display">
 s
 \begin{bmatrix}
@@ -493,63 +493,11 @@ x \\ y \\ z \\
 </ul>
 <p>平移式激光扫描采用移动导轨装置，将物体放置在导轨的平台上，相机和激光器固定在导轨的一侧，世界坐标系固定在导轨上。通过物体在导轨上移动，激光将会对物体表面进行扫描测量，以此求得物体表面的三维坐标。平移扫描适合对物体表面水平方向测量，无法对物体四周表面进行重建。为测量物体的全部表面，平移扫描可以将相机再次放置在另一侧，扫描物体另一侧的表面，最后对两次扫描结果进行点云融合，得到完整的物体表面。</p>
 <p><img src="/images/LaserScannar/QQ%E6%88%AA%E5%9B%BE20220331151635.png" style="zoom:60%;"></p>
-<h2 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h2><ol>
-<li>使用<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf">张正友标定法</a>求解相机内参矩阵$K$</li>
-<li>固定相机和激光器，采用棋盘靶标法求解相机外参$R,T$以及激光平面方程$ Ax+By+Cz=D $</li>
-<li>通过平移扫描或旋转扫描，对物体表面进行三维测量得到点云模型</li>
-</ol>
-<h3 id="张正友标定法获取相机内参"><a href="#张正友标定法获取相机内参" class="headerlink" title="张正友标定法获取相机内参"></a>张正友标定法获取相机内参</h3><p><strong>张正友标定</strong>算法具体可参考论文<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf"><em>A Flexible New Technique for CameraCalibration</em></a>。其主要方法是使用一个棋盘格平面，并以该平面为世界坐标系的$Z=0$平面，相机通过在不同的位置对棋盘格进行拍摄得到多个视角下的棋盘图像，通过相关计算优化得到相机的内参矩阵。</p>
-<blockquote>
-<p>MATLAB中Camera Calibration工具可以帮助我们进行相机标定。具体步骤可参考这篇博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/heroacool/article/details/51023921">https://blog.csdn.net/heroacool/article/details/51023921</a></p>
-</blockquote>
-<h3 id="棋盘靶标求解相机外参与激光平面"><a href="#棋盘靶标求解相机外参与激光平面" class="headerlink" title="棋盘靶标求解相机外参与激光平面"></a>棋盘靶标求解相机外参与激光平面</h3><p>相机内参得到之后，需将相机和激光器位置固定好，不论是旋转扫描还是平移扫描，，还需找到一个适合的世界坐标系位置。如平移式扫描可以将世界坐标系固定在移动导轨上，以移动方向为$Z$轴，垂直导轨的平面为$XOY$面；旋转式扫描可以将世界坐标系中心固定在转台中心，以转台平面为$YOZ$面，垂直转台的方向为$X$轴。</p>
-<p><img src="/images/LaserScannar/capture-2022-03-31-15-25-30.jpg" style="zoom:40%;"></p>
-<p>将棋盘格垂直放置在转台或导轨上的$XOZ$面和$XOY$面，并且使棋盘格上的某一角点位于世界坐标系的原点。这样，棋盘格上的每一个角点的世界坐标都能够轻易得知。通过相机拍摄可以得到两组不同位置的棋盘格图像。通过棋盘格角点检测算法可以检测出图像上的每一个角点，可得到角点的像素坐标。至此，已经得知相机内参矩阵$K$，世界坐标$P_W$，像素坐标$p$，可以通过<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b3e9fb2ad0dc">PNP算法</a>求解相机位姿，得到外参$R,T$。</p>
-<blockquote>
-<p>已知相机内参矩阵$K$，世界坐标$P_W$，像素坐标$p$，也可以通过罚函数约束标定法求解$R,T$。具体内容可参考杨院长的<a target="_blank" rel="noopener" href="https://gitee.com/corpse-dog/sourcetreetest/raw/master/%E6%97%8B%E8%BD%AC%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%BB%93%E6%9E%84%E5%85%89%E4%B8%89%E7%BB%B4%E6%B5%8B%E9%87%8F.pptx"><em>PPT</em></a></p>
-</blockquote>
-<p><img src="/images/LaserScannar/capture-2022-03-31-15-21-58.jpg" style="zoom:40%;"></p>
-<p>激光平面的标定同样使用棋盘格平面，将棋盘格放在$XOY$面和$XOZ$面上，打开激光器，激光线条打在棋盘格平面上，通过相机拍摄可以得到两组激光图像。通过<strong>光条检测算法</strong>可以得到图像上的激光特征点，从而拟合出一条激光线。棋盘格角点检测算法可以检测出棋盘格每条横线上的角点，一幅图像可以拟合多条棋盘格横线。通过联立直线方程，可以求得激光线与每条横线的交点的像素坐标。</p>
-<p><img src="/images/LaserScannar/QQ%E6%88%AA%E5%9B%BE20220331164426.png" style="zoom:50%;"></p>
-<p>交点的像素坐标已知，可以通过相似三角形求得激光与棋盘横线的世界坐标。如图，假如棋盘格平面位于$XOY$面上，则$M(x,y_1,0)$，$ N(x,y_2,0) $坐标都可立即得知，由于$MNP$位于同一横线上，则$P(x,y_3,0)$坐标只有$y_3$未知。上文可知$m(u_1,v_1)$，$n(u_2,v_2)$，$p(u_3,v_3)$的像素坐标，通过相似关系可以得到$\frac {mp}{mn}=\frac {MP}{MN}$，从而可以求出$P$点坐标。</p>
-<script type="math/tex; mode=display">
-\frac {mp}{mn}=\frac {u_3-u_1}{u_2-u_1},\frac {MP}{MN}=\frac {y_3-y_1}{y_2-y_1}</script><script type="math/tex; mode=display">
-y_3=y_1-\frac{(u_3-u_1)(y_1-y_2)}{u_2-u_1}</script><p><img src="/images/LaserScannar/1.jpg" style="zoom:50%;"></p>
-<p>一副激光图像可以得到一组三维空间中的激光线交点，但一组点仅能代表空间中激光平面里的的一条直线。所以，棋盘格分别放在$XOY$面和$XOZ$面上，可以得到两组点，来拟合三维世界坐标系中的激光平面，可以通过最小二乘计算出平面方程$ Ax+By+Cz=D $.</p>
-<blockquote>
-<p>为了使平面方程更具有鲁棒性，可以再次添加棋盘格放置在$XOY$面的激光图像，得到三组结果，使得平面拟合结果更加准确。</p>
-</blockquote>
-<h3 id="Reconstruction"><a href="#Reconstruction" class="headerlink" title="Reconstruction"></a>Reconstruction</h3><p>在进行激光扫描时，拍摄某一时刻的激光图像，使用<strong>光条检测算法</strong>提取激光点$p(u,v)$，通过公式$ P’_W=R^-(K^-p)-T $，计算得出点$p$在世界坐标系下的像点$ P’_W=(a,b,c)^T $，但该点并不是真实点。同时，再通过平移向量$T$计算得到相机中心在世界坐标系下的坐标$ P_{CO}=-T=(-t_1,-t_2,-t_3)^T $。由此，可得到$ P’_WP_{CO} $直线方程，通过与标定得到的激光平面方程联立起来，可得到唯一坐标$P(x,y,z)$.</p>
-<script type="math/tex; mode=display">
-\begin{cases}l:&\frac {x+t_1}{a+t_1}=\frac {y+t_2}{b+t_2}=\frac {z+t_3}{c+t_3}=k\\[2ex]
-plane:&Ax+By+Cz=D\end{cases}</script><p>在某一个激光扫描时刻，不仅要得到当前图像上激光点的世界坐标，还要计算出之前得到的点坐标在移动或旋转后的新坐标。在这一方面计算时，平移式扫描和旋转式扫描稍有不同。</p>
-<ul>
-<li><strong>平移式扫描</strong></li>
-</ul>
-<p>以上述的平移扫描装置为例，移动导轨的平移方向为$Z$轴方向。假设，导轨每次移动的距离为$d$，移动的次数为$n$。则移动后的点$P’=(x,y,z+nd)$。</p>
-<ul>
-<li><strong>旋转式扫描</strong></li>
-</ul>
-<p>以上述的旋转扫描系统为例，$X$轴即为转轴。假设转台旋转方向为逆时针方向，每次旋转角度为$\alpha$，旋转次数为$n$，相当于点$P$绕$X$轴逆时针旋转了$\theta=n\alpha$。此时，可以通过旋转矩阵计算旋转后的坐标。</p>
-<script type="math/tex; mode=display">
-P'=\begin{bmatrix}
-1 & 0 & 0 \\ 
-0 & cos\theta & sin\theta \\
-0 & -sin\theta & cos\theta\\
-\end{bmatrix}\begin{bmatrix}
-x \\ y \\ z\\
-\end{bmatrix}=\begin{bmatrix}
-x \\ ycos\theta+zsin\theta \\ -ysin\theta+zcos\theta\\
-\end{bmatrix}</script><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><ul>
-<li><p><strong>Steger光条检测算法</strong></p>
+<h3 id="激光检测算法"><a href="#激光检测算法" class="headerlink" title="激光检测算法"></a>激光检测算法</h3><p><strong>Steger光条检测算法</strong></p>
 <blockquote>
 <p>常用的激光检测算法有极值法、灰度重心法、Steger算法等，通过查阅相关文献了解到Steger算法具有精度更高的测量结果。具体算法过程可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dangkie/article/details/78996761">光条中心线提取-Steger算法（基于Hessian矩阵）_Dangkie的博客-CSDN博客_steger</a></p>
 </blockquote>
-</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">using namespace std;
-using namespace cv;
-class Steger {
+<pre class="line-numbers language-none"><code class="language-none">class Steger {
 public:
 	Steger(Mat, int);
 	~Steger();
@@ -560,11 +508,8 @@ public:
     int Threshold;
 	Mat dx, dy;
 	Mat dxx, dyy, dxy;
-
 private:
-
 };
-
 Steger::Steger(Mat image, int thres) {
     Threshold = thres;
     Img = image;
@@ -584,7 +529,6 @@ void Steger::Init() {
     m3 = (Mat_&lt;float&gt;(3, 1) &lt;&lt; 1, -2, 1);   //二阶x偏导
     m4 = (Mat_&lt;float&gt;(1, 3) &lt;&lt; 1, -2, 1);   //二阶y偏导
     m5 = (Mat_&lt;float&gt;(2, 2) &lt;&lt; 1, -1, -1, 1);   //二阶xy偏导
-
     filter2D(image, dx, CV_32FC1, m1);
     filter2D(image, dy, CV_32FC1, m2);
     filter2D(image, dxx, CV_32FC1, m3);
@@ -597,18 +541,13 @@ void Steger::FindNormal(int y, int x, double&amp; nx, double&amp; ny) {
     hessian.at&lt;float&gt;(0, 1) = dxy.at&lt;float&gt;(y, x);
     hessian.at&lt;float&gt;(1, 0) = dxy.at&lt;float&gt;(y, x);
     hessian.at&lt;float&gt;(1, 1) = dyy.at&lt;float&gt;(y, x);
-
     Mat eValue;
     Mat eVectors;
     eigen(hessian, eValue, eVectors);  //两个特征值
-    //点(x,y)的法线方向可由该点 Hessian 矩阵绝对值最大的特征值所对应的特征向量(nx,ny)给出
-    //cout &lt;&lt; eValue &lt;&lt; endl;
-    if (fabs(eValue.at&lt;float&gt;(0, 0)) &gt;= fabs(eValue.at&lt;float&gt;(1, 0)))  //fabs返回浮点数绝对值
-    {
+    if (fabs(eValue.at&lt;float&gt;(0, 0)) &gt;= fabs(eValue.at&lt;float&gt;(1, 0))) {
         nx = eVectors.at&lt;float&gt;(0, 0); //特征向量
         ny = eVectors.at&lt;float&gt;(0, 1);    }
-    else
-    {
+    else {
         nx = eVectors.at&lt;float&gt;(1, 0);
         ny = eVectors.at&lt;float&gt;(1, 1);
     }
@@ -622,7 +561,6 @@ void Steger::FindCenterLine(vector&lt;Point2f&gt;&amp; Pts) {
             {
                 double nx, ny;
                 FindNormal(j, i, nx, ny);//寻找激光光条法线方向
-                // 判断亚像素点是否在该像素内，该点 (x0,y0) 为光条的中心点， (px,py) 则为亚像素坐标
                 double bottom = (nx * nx * dxx.at&lt;float&gt;(j, i) + 2 * nx * ny * dxy.at&lt;float&gt;(j, i) + ny * ny * dyy.at&lt;float&gt;(j, i));
                 if (bottom != 0) {
                     double t = -(nx * dx.at&lt;float&gt;(j, i) + ny * dy.at&lt;float&gt;(j, i)) / bottom;
@@ -634,249 +572,108 @@ void Steger::FindCenterLine(vector&lt;Point2f&gt;&amp; Pts) {
             }
         }
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><p><strong>棋盘靶标算法</strong></p>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h2><ol>
+<li>使用<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf">张正友标定算法</a>求解相机内参矩阵$K$</li>
+<li>固定相机和激光器，采用棋盘靶标法求解相机外参$R,T$以及激光平面方程$ Ax+By+Cz=D $</li>
+<li>通过平移扫描或旋转扫描，对物体表面进行三维测量得到点云模型</li>
+</ol>
+<h3 id="1-张正友标定获取相机内参"><a href="#1-张正友标定获取相机内参" class="headerlink" title="1. 张正友标定获取相机内参"></a>1. 张正友标定获取相机内参</h3><p><strong>张正友标定</strong>算法具体可参考论文<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf"><em>A Flexible New Technique for CameraCalibration</em></a>。其主要方法是使用一个棋盘格平面，并以该平面为世界坐标系的$Z=0$平面，相机通过在不同的位置对棋盘格进行拍摄得到多个视角下的棋盘图像，通过相关计算优化得到相机的内参矩阵。<br></p><pre class="line-numbers language-none"><code class="language-none">void getObjPoint(vector&lt;Point3f&gt;&amp; obj, Size board, int gridSize) {
+    for (int i = 0; i &lt; board.height; i++) {
+        for (int j = 0; j &lt; board.width; j++) {
+            Point3f real = Point3f(i * gridSize, j * gridSize, 0);
+            obj.push_back(real);
+        }
+    }
+}
+void ZhangCalib(string file_name, int gridSize, Size board_size, Mat&amp; K) {
+    int count = 1;
+    vector&lt;vector&lt;Point2f&gt;&gt; imgPoint;
+    vector&lt;vector&lt;Point3f&gt;&gt; objPoint;
+    Size img_size;
+    while (1) {
+        string imgName = file_name + to_string(count) + ".jpg";  //注意图片格式
+        struct stat buffer;
+        //判断图片是否存在
+        if (stat(imgName.c_str(), &amp;buffer) != 0) {
+            break;
+        }
+        Mat img = imread(imgName);
+        if (count == 1) {
+            img_size.width = img.cols;
+            img_size.height = img.rows;
+            cout &lt;&lt; img_size &lt;&lt; endl;
+        }
+        Mat gray;
+        cvtColor(img, gray, COLOR_BGR2GRAY);
+        vector&lt;Point2f&gt; corners;
+        bool ret = findChessboardCorners(img, board_size, corners, CALIB_CB_ADAPTIVE_THRESH + CALIB_CB_NORMALIZE_IMAGE);
+        if (!ret) {
+            cout &lt;&lt; "can not find chessboard corners!" &lt;&lt; endl;
+            return;
+        }
+        else {//亚像素精确化
+            cornerSubPix(gray, corners, Size(11, 11), Size(-1, -1), TermCriteria(TermCriteria::EPS + TermCriteria::MAX_ITER, 30, 0.1));
+        }
+        cout &lt;&lt; corners.size() &lt;&lt; endl;
+        drawChessboardCorners(img, board_size, corners, ret);
+        imshow(imgName, img);
+        vector&lt;Point3f&gt; obj;
+        getObjPoint(obj, board_size, gridSize);
+        imgPoint.push_back(corners);
+        objPoint.push_back(obj);
+        count++;
+    }
+    Mat dist;
+    vector&lt;Mat&gt; Rovs, Trans;
+    double kill = calibrateCamera(objPoint, imgPoint, img_size, K, dist, Rovs, Trans);
+    cout &lt;&lt; "投影误差：" &lt;&lt; kill &lt;&lt; endl;
+    cout &lt;&lt; "相机内参：" &lt;&lt; K &lt;&lt; endl;
+    cout &lt;&lt; "畸变系数：" &lt;&lt; dist &lt;&lt; endl;
+    waitKey(0);
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <blockquote>
-<p>其中棋盘格角点检测算法采用opencv<code>findChessboardCorners</code>函数，参考自<a target="_blank" rel="noopener" href="https://blog.csdn.net/Touch_Dream/article/details/84426211">opencv寻找棋盘格点位置_老司机的诗和远方的博客-CSDN博客_opencv找棋盘格</a>；最小二乘拟合平面算法参考自<a target="_blank" rel="noopener" href="https://my.oschina.net/u/1046919/blog/1612923/">opencv3 最小二乘拟合平面 - KyJason的个人空间 - OSCHINA - 中文开源技术交流社区</a>，也浏览到使用<a target="_blank" rel="noopener" href="https://immortalqx.github.io/2021/11/28/ransac/">RANSAC算法拟合平面</a>，后续可以进行相关改进。</p>
+<p>MATLAB中Camera Calibration工具也可以进行相机标定。具体步骤可参考这篇博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/heroacool/article/details/51023921">https://blog.csdn.net/heroacool/article/details/51023921</a></p>
 </blockquote>
-</li>
+<h3 id="2-棋盘靶标求解相机外参与激光平面"><a href="#2-棋盘靶标求解相机外参与激光平面" class="headerlink" title="2. 棋盘靶标求解相机外参与激光平面"></a>2. 棋盘靶标求解相机外参与激光平面</h3><p>相机内参得到之后，需将相机和激光器位置固定好，不论是旋转扫描还是平移扫描，，还需找到一个适合的世界坐标系位置。如平移式扫描可以将世界坐标系固定在移动导轨上，以移动方向为$Z$轴，垂直导轨的平面为$XOY$面；旋转式扫描可以将世界坐标系中心固定在转台中心，以转台平面为$YOZ$面，垂直转台的方向为$X$轴。</p>
+<p><img src="/images/LaserScannar/capture-2022-03-31-15-25-30.jpg" style="zoom:40%;"></p>
+<p>将棋盘格垂直放置在转台或导轨上的$XOZ$面和$XOY$面，并且使棋盘格上的某一角点位于世界坐标系的原点。这样，棋盘格上的每一个角点的世界坐标都能够轻易得知。通过相机拍摄可以得到两组不同位置的棋盘格图像。通过棋盘格角点检测算法可以检测出图像上的每一个角点，可得到角点的像素坐标。至此，已经得知相机内参矩阵$K$，世界坐标$P_W$，像素坐标$p$，可以通过<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b3e9fb2ad0dc">PNP算法</a>求解相机位姿，得到外参$R,T$。</p>
+<blockquote>
+<p>已知相机内参矩阵$K$，世界坐标$P_W$，像素坐标$p$，也可以通过罚函数约束标定法求解$R,T$。具体内容可参考杨院长的<a target="_blank" rel="noopener" href="https://gitee.com/corpse-dog/sourcetreetest/raw/master/%E6%97%8B%E8%BD%AC%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%BB%93%E6%9E%84%E5%85%89%E4%B8%89%E7%BB%B4%E6%B5%8B%E9%87%8F.pptx"><em>PPT</em></a></p>
+</blockquote>
+<p><img src="/images/LaserScannar/capture-2022-03-31-15-21-58.jpg" style="zoom:40%;"></p>
+<p>激光平面的标定同样使用棋盘格平面，将棋盘格放在$XOY$面和$XOZ$面上，打开激光器，激光线条打在棋盘格平面上，通过相机拍摄可以得到两组激光图像。通过<strong>光条检测算法</strong>可以得到图像上的激光特征点，从而拟合出一条激光线。棋盘格角点检测算法可以检测出棋盘格每条横线上的角点，一幅图像可以拟合多条棋盘格横线。通过联立直线方程，可以求得激光线与每条横线的交点的像素坐标。</p>
+<p><img src="/images/LaserScannar/QQ%E6%88%AA%E5%9B%BE20220331164426.png" style="zoom:50%;"></p>
+<p>交点的像素坐标已知，可以通过相似三角形求得激光与棋盘横线的世界坐标。如图，假如棋盘格平面位于$XOY$面上，则$M(x,y_1,0)$，$ N(x,y_2,0) $坐标都可立即得知，由于$MNP$位于同一横线上，则$P(x,y_3,0)$坐标只有$y_3$未知。上文可知$m(u_1,v_1)$，$n(u_2,v_2)$，$p(u_3,v_3)$的像素坐标，通过相似关系可以得到$\frac {mp}{mn}=\frac {MP}{MN}$，从而可以求出$P$点坐标。</p>
+<script type="math/tex; mode=display">
+\frac {mp}{mn}=\frac {u_3-u_1}{u_2-u_1},\frac {MP}{MN}=\frac {y_3-y_1}{y_2-y_1}</script><script type="math/tex; mode=display">
+y_3=y_1-\frac{(u_3-u_1)(y_1-y_2)}{u_2-u_1}</script><p><img src="/images/LaserScannar/1.jpg" style="zoom:50%;"></p>
+<p>一副激光图像可以得到一组三维空间中的激光线交点，但一组点仅能代表空间中激光平面里的一条直线。所以，棋盘格分别放在$XOY$面和$XOZ$面上，可以得到两组点，来拟合三维世界坐标系中的激光平面，可以通过最小二乘计算出平面方程$ Ax+By+Cz=D $.</p>
+<blockquote>
+<p>为了使平面方程更具有鲁棒性，可以再次添加棋盘格放置在$XOY$面的激光图像，得到三组结果，使得平面拟合结果更加准确。最小二乘拟合平面算法可参考<a target="_blank" rel="noopener" href="https://my.oschina.net/u/1046919/blog/1612923/">opencv3 最小二乘拟合平面 - KyJason的个人空间 - OSCHINA - 中文开源技术交流社区</a>，也浏览到使用<a target="_blank" rel="noopener" href="https://immortalqx.github.io/2021/11/28/ransac/">RANSAC算法拟合平面</a>，后续可以进行相关改进。</p>
+</blockquote>
+<h3 id="3-扫描重建"><a href="#3-扫描重建" class="headerlink" title="3. 扫描重建"></a>3. 扫描重建</h3><p>在进行激光扫描时，拍摄某一时刻的激光图像，使用<strong>光条检测算法</strong>提取激光点$p(u,v)$，通过公式$ P’_W=R^{-1}(K^{-1}P-T) $，计算得出点$p$在世界坐标系下的像点$ P’_W=(a,b,c)^T $，但该点并不是真实点。需要计算得到相机中心在世界坐标系下的坐标$ P_{CO}=-R^{-1}T=-(t_1,t_2.t_3)^T $。由此，可得到$ P’_WP_{CO} $直线方程，通过与标定得到的激光平面方程联立起来，可得到唯一坐标$P(x,y,z)$.</p>
+<script type="math/tex; mode=display">
+\begin{cases}l:&\frac {x+t_1}{a+t_1}=\frac {y+t_2}{b+t_2}=\frac {z+t_3}{c+t_3}=k\\[2ex]
+plane:&Ax+By+Cz=D\end{cases}</script><p>在某一个激光扫描时刻，不仅要得到当前图像上激光点的世界坐标，还要计算出之前得到的点坐标在移动或旋转后的新坐标。在这一方面计算时，平移式扫描和旋转式扫描稍有不同。</p>
+<ul>
+<li><strong>平移式扫描</strong></li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">using namespace std;
-using namespace cv;
-class Calibrate {
-public:
-	Calibrate(Mat, vector&lt;Mat&gt;, vector&lt;Mat&gt;, int, int, int, int, int);
-	~Calibrate();
-	void chessDetect(Mat&amp;, vector&lt;Point2f&gt;&amp;);//检测棋盘格图像上的角点
-	void getWorldPoint(vector&lt;Point3f&gt;&amp;);//获取每个角点对应的世界点坐标
-	void drawLine(Mat&amp;, Vec4f); //根据获取的直线方程，找到两个端点绘制直线
-	Point2f getlinePoint(Vec4f, Vec4f);//根据两个直线方程获取直线交点
-	void getCrossWorld(Point3f&amp;, vector&lt;Point3f&gt;, vector&lt;Point2f&gt;, Point2f);
-	vector&lt;Point3f&gt; getLaserPoint(Mat&amp;, Mat&amp;, vector&lt;Point3f&gt;, vector&lt;Point2f&gt;, Mat);
-	Mat fitPlane(const Mat);
-	void getRotation(vector&lt;Mat&gt;&amp;);
-	void Calibration(Mat&amp;, Mat&amp;, Mat&amp;);//标定
-	vector&lt;Mat&gt; ChessImage;  //棋盘格放置在世界坐标系不同位置所拍摄的图像
-	vector&lt;Mat&gt; LaserImage;   //对应的每个位置拍摄激光的图像
-	int gridSize;  //每个棋盘格点大小，单位mm
-	int col, row;  //棋盘格点的行列数
-	int initRow, initCol;  //世界坐标系原点所在的行数+1，与列数
-	Mat K;
-
-private:
-
-};
-
-//光条检测
-vector&lt;Point2f&gt; LaserDetect(Mat&amp; img) {
-	int threshold = 120;
-	Steger Image = Steger(img, threshold);
-	Image.Init();
-	vector&lt;Point2f&gt; Pt;
-	Image.FindCenterLine(Pt);
-	cout &lt;&lt; Pt.size() &lt;&lt; endl;
-	for (int k = 0; k &lt; Pt.size(); k++) {
-		circle(img, Pt[k], 1, Scalar(0, 255, 255), -1);
-	}
-	return Pt;
-}
-
-Calibrate::Calibrate(Mat k, vector&lt;Mat&gt; chessimg, vector&lt;Mat&gt; laserimg, int Col, int Row, int GridSize, int InitRow = 0, int InitCol = 0) {
-	ChessImage = chessimg;
-	LaserImage = laserimg;
-	col = Col;
-	row = Row;
-	gridSize = GridSize;
-	initRow = InitRow;
-	initCol = InitCol;
-	K = k;
-}
-Calibrate::~Calibrate() {
-
-}
-void Calibrate::chessDetect(Mat&amp; img, vector&lt;Point2f&gt;&amp; corners) {
-	Size board_size = Size(col, row);
-	Mat gray;
-	cvtColor(img, gray, COLOR_BGR2GRAY);
-	bool patternfound = findChessboardCorners(img, board_size, corners, CALIB_CB_ADAPTIVE_THRESH + CALIB_CB_NORMALIZE_IMAGE);
-	if (!patternfound) {
-		cout &lt;&lt; "can not find chessboard corners!" &lt;&lt; endl;
-		return;
-	}
-	else {//亚像素精确化
-		cornerSubPix(gray, corners, Size(11, 11), Size(-1, -1), TermCriteria(TermCriteria::EPS + TermCriteria::MAX_ITER, 30, 0.1));
-	}
-	cout &lt;&lt; corners.size() &lt;&lt; endl;
-	for (int i = 0; i &lt; corners.size(); i++)
-	{
-		circle(img, corners[i], 2, cv::Scalar(255, 0, 255));
-		putText(img, to_string(i + 1), corners[i], FONT_HERSHEY_SIMPLEX, 0.7, Scalar(0, 255, 0), 1, 2);
-	}
-}
-void Calibrate::getWorldPoint(vector&lt;Point3f&gt;&amp; worldPt) {
-	for (int i = 0; i &lt; row; i++) {
-		for (int j = 0; j &lt; col; j++) {
-			//在标定外参时，将棋盘格垂直放置在平台上，并位于XOY面
-			//使某一点位于世界坐标系原点上（通常是棋盘格的最后一行）
-			//但是在角点检测时，最后一行不检测，检测顺序是从左上到右下
-			//世界坐标是从右下到左上
-			Point3f pt = Point3f((initRow - i) * gridSize, (initCol - j) * gridSize, 0.0);
-			worldPt.push_back(pt);
-		}
-	}
-}
-void Calibrate::drawLine(Mat&amp; img, Vec4f current) {
-	//current[a,b,x0,y0]  k=b/a;y=k*(x-x0)+y0
-	Point2f point1 = Point2f(0, current[3] - current[2] * (current[1] / current[0]));
-	Point2f point2 = Point2f(img.cols, current[3] + (img.cols - current[2]) * (current[1] / current[0]));
-	line(img, point1, point2, Scalar(0, 0, 255), 1);
-}
-Point2f Calibrate::getlinePoint(Vec4f lineParam1, Vec4f lineParam2) {
-	float k1 = lineParam1[1] / lineParam1[0];
-	float b1 = lineParam1[3] - k1 * lineParam1[2];
-	float k2 = lineParam2[1] / lineParam2[0];
-	float b2 = lineParam2[3] - k2 * lineParam2[2];
-	float x = (b1 - b2) / (k2 - k1);
-	Point2f point = Point2f(x, k1 * x + b1);
-	return point;
-}
-//获取世界坐标系下XOY面交点坐标
-void Calibrate::getCrossWorld(Point3f&amp; Wp, vector&lt;Point3f&gt; world, vector&lt;Point2f&gt; img, Point2f p) {
-	//本函数默认是采用XOY面计算的
-	float mp_mn = (p.x - img[0].x) / (img[1].x - img[0].x);
-	float Py = world[0].y - (world[0].y - world[1].y) * mp_mn;
-	Wp = Point3f(world[0].x, Py, world[0].z);
-}
-vector&lt;Point3f&gt; Calibrate::getLaserPoint(Mat&amp; img, Mat&amp; Laser, vector&lt;Point3f&gt; worldPt, vector&lt;Point2f&gt; imgPt, Mat R) {
-	vector&lt;Point2f&gt; LaserPt = LaserDetect(Laser);  //光条检测
-	Vec4f LaserLine;   //获取激光所在的直线
-	fitLine(LaserPt, LaserLine, DIST_L2, 0, 0.01, 0.01);  //拟合光条直线
-	drawLine(Laser, LaserLine);
-	drawLine(img, LaserLine);
-	vector&lt;Point2f&gt;* temp = new vector&lt;Point2f&gt;[row];  //存放棋盘格上每条横线的点
-	vector&lt;Point2f&gt;* imgNode = new vector&lt;Point2f&gt;[row];//存放图像下每条横线的两个端点mn
-	vector&lt;Point3f&gt;* worldNode = new vector&lt;Point3f&gt;[row];//存放世界坐标系上每条横线的点两个端点MN
-	int k = 0;
-	for (int i = 0; i &lt; imgPt.size(); i++) {
-		if (k &gt;= row)
-			continue;
-		temp[k].push_back(imgPt[i]);
-		if (i % col == 0) {
-			imgNode[k].push_back(imgPt[i]);
-			worldNode[k].push_back(worldPt[i]);
-		}
-		if ((i + 1) % col == 0) {
-			imgNode[k].push_back(imgPt[i]);
-			worldNode[k].push_back(worldPt[i]);
-			k++;
-		}
-	}
-	vector&lt;Point2f&gt; crossPoint;
-	vector&lt;Point3f&gt; WorldCrossPoint;
-	for (int i = 0; i &lt; row; i++) {
-		Vec4f current;
-		fitLine(temp[i], current, DIST_L2, 0, 0.01, 0.01);  //拟合棋盘格每条横线
-		Point2f point = getlinePoint(LaserLine, current); //获取每条线与激光的交点
-		Point3f WP;
-		getCrossWorld(WP, worldNode[i], imgNode[i], point); //获取交点的世界坐标
-		Mat pp = R * Mat(WP); //坐标转换
-		WP = Point3f(pp.at&lt;float&gt;(0), pp.at&lt;float&gt;(1), pp.at&lt;float&gt;(2));//转为point
-		drawLine(img, current);
-		circle(img, point, 2, Scalar(0, 255, 255), -1);
-		crossPoint.push_back(point);
-		WorldCrossPoint.push_back(WP);
-	}
-	cout &lt;&lt; crossPoint &lt;&lt; endl;
-	cout &lt;&lt; WorldCrossPoint &lt;&lt; endl;
-	delete[] temp;
-	delete[] imgNode;
-	delete[] worldNode;
-	return WorldCrossPoint;
-}
-/* 最小二乘拟合平面，平面方程：Ax+By+Cz=D */
-Mat Calibrate::fitPlane(const Mat points) {
-	cout &lt;&lt; points.size() &lt;&lt; endl;
-	int rows = points.rows;
-	int cols = points.cols;
-	Mat centroid = Mat::zeros(1, cols, CV_32FC1); // 平均坐标
-	for (int i = 0; i &lt; cols; i++) {
-		for (int j = 0; j &lt; rows; j++) {
-			centroid.at&lt;float&gt;(0, i) += points.at&lt;float&gt;(j, i);
-		}
-		centroid.at&lt;float&gt;(0, i) /= rows;
-	}
-	Mat points2 = Mat::ones(rows, cols, CV_32FC1);//A矩阵
-	for (int i = 0; i &lt; rows; i++) {
-		for (int j = 0; j &lt; cols; j++) {
-			points2.at&lt;float&gt;(i, j) = points.at&lt;float&gt;(i, j) - centroid.at&lt;float&gt;(0, j);
-		}
-	}
-	Mat A, W, U, VT;
-	gemm(points2, points, 1, NULL, 0, A, GEMM_1_T);
-	SVD::compute(A, W, U, VT);  //奇异值分解
-	Mat plane = Mat::zeros(cols + 1, 1, CV_32FC1);
-	for (int c = 0; c &lt; cols; c++) {
-		plane.at&lt;float&gt;(c, 0) = VT.at&lt;float&gt;(cols - 1, c);
-		plane.at&lt;float&gt;(cols, 0) += plane.at&lt;float&gt;(c, 0) * centroid.at&lt;float&gt;(0, c); //d
-	}
-	cout &lt;&lt; plane &lt;&lt; endl;
-	return plane;
-}
-void Calibrate::getRotation(vector&lt;Mat&gt;&amp; Rotation) {
-	//XOY面棋盘格逆时针绕X轴旋转90度到XOZ面
-	//XOY面
-	Mat R1(Matx33f(
-		1, 0, 0,
-		0, 1, 0,
-		0, 0, 1
-	));
-	//XOZ面
-	Mat R2(Matx33f(
-		1, 0, 0,
-		0, 0, 1,
-		0, -1, 0
-	));
-	Rotation.push_back(R1);
-	Rotation.push_back(R2);
-}
-void Calibrate::Calibration(Mat&amp; R, Mat&amp; T, Mat&amp; plane) {
-	if (ChessImage.size() != LaserImage.size())
-		return;
-	vector&lt;Point2f&gt; AllChessPoint;  //所有的棋盘格点
-	vector&lt;Point3f&gt; AllWorldPoint;  //棋盘格点对应的世界坐标系点，用于计算外参
-	vector&lt;Point3f&gt; LaserWorldPoint;  //激光线与棋盘格横线的交点的世界坐标，用于拟合激光平面
-	int n = ChessImage.size();
-	vector&lt;Mat&gt; Rotation;
-	getRotation(Rotation);
-	for (int t = 0; t &lt; ChessImage.size(); t++) {
-		if (ChessImage[t].size() != LaserImage[t].size())  //保证每张图像以及对应的激光图像尺寸相同
-			continue;
-		vector&lt;Point2f&gt; chessPoint;  
-		chessDetect(ChessImage[t], chessPoint);
-		vector&lt;Point3f&gt; worldPoint;//获取的只是XOY面坐标
-		getWorldPoint(worldPoint);
-		Mat pp = Mat(worldPoint).reshape(1, col * row);  //vector&lt;point&gt; to Mat
-		Mat ppp = (Rotation[t] * pp.t()).t();  //乘上旋转矩阵得到另一面的坐标
-		vector&lt;Point3f&gt; worldChange = Mat_&lt;Point3f&gt;(ppp);  // Mat to vector&lt;point&gt;
-		cout &lt;&lt; worldChange &lt;&lt; endl;
-		vector&lt;Point3f&gt; WorldCrossPoint = getLaserPoint(ChessImage[t], LaserImage[t], worldPoint, chessPoint, Rotation[t]);
-		AllChessPoint.insert(AllChessPoint.end(), chessPoint.begin(), chessPoint.end());                //size=n*col*row
-		AllWorldPoint.insert(AllWorldPoint.end(), worldChange.begin(), worldChange.end());                //size=n*col*row
-		LaserWorldPoint.insert(LaserWorldPoint.end(), WorldCrossPoint.begin(), WorldCrossPoint.end());  //size=n*row;
-	}
-	solvePnPRansac(AllWorldPoint, AllChessPoint, K, noArray(), R, T);  //pnp求解r,t
-	Rodrigues(R, R);
-	Mat Rt;
-	hconcat(R, T, Rt);
-	cout &lt;&lt; "外参矩阵：" &lt;&lt; Rt &lt;&lt; endl;
-	Mat M = K * Rt;  //投影矩阵
-	cout &lt;&lt; "投影矩阵：" &lt;&lt; M &lt;&lt; endl;
-	//拟合三维激光平面
-	Mat PointMat = Mat(LaserWorldPoint).reshape(1, n * row);//将点坐标转化为矩阵形式: n*dim
-	plane = fitPlane(PointMat);
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<p>以上述的平移扫描装置为例，移动导轨的平移方向为$Z$轴方向。假设，导轨每次移动的距离为$d$，移动的次数为$n$。则移动后的点$P’=(x,y,z+nd)$。</p>
+<ul>
+<li><strong>旋转式扫描</strong></li>
+</ul>
+<p>以上述的旋转扫描系统为例，$X$轴即为转轴。假设转台旋转方向为逆时针方向，每次旋转角度为$\alpha$，旋转次数为$n$，相当于点$P$绕$X$轴逆时针旋转了$\theta=n\alpha$。此时，可以通过旋转矩阵计算旋转后的坐标。</p>
+<script type="math/tex; mode=display">
+P'=\begin{bmatrix}
+1 & 0 & 0 \\ 
+0 & cos\theta & -sin\theta \\
+0 & sin\theta & cos\theta\\
+\end{bmatrix}\begin{bmatrix}
+x \\ y \\ z\\
+\end{bmatrix}=\begin{bmatrix}
+x \\ ycos\theta-zsin\theta \\ ysin\theta+zcos\theta\\
+\end{bmatrix}</script><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li>钦星晨. 自旋转式线结构光三维测量关键技术研究[D].电子科技大学,2021.DOI:10.27005/d.cnki.gdzku.2021.003676.</li>
 <li>王云飞. 旋转扫描线结构光三维测量系统[D].长安大学,2020.DOI:10.26976/d.cnki.gchau.2020.001380.</li>
 </ol>
@@ -944,12 +741,12 @@ void Calibrate::Calibration(Mat&amp; R, Mat&amp; T, Mat&amp; plane) {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Laser-Scannar/">
-                                    <span class="chip bg-color">Laser Scannar</span>
+                                <a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/">
+                                    <span class="chip bg-color">三维重建</span>
                                 </a>
                             
-                                <a href="/tags/3D-Reconstruction/">
-                                    <span class="chip bg-color">3D-Reconstruction</span>
+                                <a href="/tags/%E7%BA%BF%E6%BF%80%E5%85%89/">
+                                    <span class="chip bg-color">线激光</span>
                                 </a>
                             
                         </div>
@@ -1147,8 +944,8 @@ void Calibrate::Calibration(Mat&amp; R, Mat&amp; T, Mat&amp; plane) {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/3D-Reconstruction/" class="post-category">
-                                    3D-Reconstruction
+                            <a href="/categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" class="post-category">
+                                    三维重建
                                 </a>
                             
                             
@@ -1158,8 +955,8 @@ void Calibrate::Calibration(Mat&amp; R, Mat&amp; T, Mat&amp; plane) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Laser-Scannar/">
-                        <span class="chip bg-color">Laser Scannar</span>
+                    <a href="/tags/%E7%BA%BF%E6%BF%80%E5%85%89/">
+                        <span class="chip bg-color">线激光</span>
                     </a>
                     
                 </div>
@@ -1338,7 +1135,7 @@ void Calibrate::Calibration(Mat&amp; R, Mat&amp; T, Mat&amp; plane) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">6.8k</span>
+                        class="white-color">5.2k</span>
             
             
             

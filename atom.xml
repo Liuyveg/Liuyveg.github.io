@@ -6,7 +6,7 @@
   <link href="https://liuyveg.github.io/atom.xml" rel="self"/>
   
   <link href="https://liuyveg.github.io/"/>
-  <updated>2022-04-04T07:58:38.052Z</updated>
+  <updated>2022-04-09T08:52:13.545Z</updated>
   <id>https://liuyveg.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuyveg.github.io/2022/04/04/serration/"/>
     <id>https://liuyveg.github.io/2022/04/04/serration/</id>
     <published>2022-04-04T05:02:14.000Z</published>
-    <updated>2022-04-04T07:58:38.052Z</updated>
+    <updated>2022-04-09T08:52:13.545Z</updated>
     
     
       
@@ -34,10 +34,10 @@
     
     
     
-    <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/categories/3D-Reconstruction/"/>
+    <category term="三维重建" scheme="https://liuyveg.github.io/categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     
-    <category term="Laser Scannar" scheme="https://liuyveg.github.io/tags/Laser-Scannar/"/>
+    <category term="线激光" scheme="https://liuyveg.github.io/tags/%E7%BA%BF%E6%BF%80%E5%85%89/"/>
     
   </entry>
   
@@ -46,25 +46,25 @@
     <link href="https://liuyveg.github.io/2022/03/30/laserscannar/"/>
     <id>https://liuyveg.github.io/2022/03/30/laserscannar/</id>
     <published>2022-03-30T10:25:42.000Z</published>
-    <updated>2022-04-04T05:08:02.877Z</updated>
+    <updated>2022-04-09T08:34:32.544Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Laser-Scannar-for-3D-Reconstruction&quot;&gt;&lt;a href=&quot;#Laser-Scannar-for-3D-Reconstruction&quot; class=&quot;headerlink&quot; title=&quot;Laser Scannar for</summary>
+    <summary type="html">&lt;h1 id=&quot;线激光扫描三维重建&quot;&gt;&lt;a href=&quot;#线激光扫描三维重建&quot; class=&quot;headerlink&quot; title=&quot;线激光扫描三维重建&quot;&gt;&lt;/a&gt;线激光扫描三维重建&lt;/h1&gt;&lt;h2 id=&quot;Principle&quot;&gt;&lt;a href=&quot;#Principle&quot;</summary>
         
       
     
     
     
-    <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/categories/3D-Reconstruction/"/>
+    <category term="三维重建" scheme="https://liuyveg.github.io/categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     
-    <category term="Laser Scannar" scheme="https://liuyveg.github.io/tags/Laser-Scannar/"/>
+    <category term="三维重建" scheme="https://liuyveg.github.io/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
-    <category term="3D-Reconstruction" scheme="https://liuyveg.github.io/tags/3D-Reconstruction/"/>
+    <category term="线激光" scheme="https://liuyveg.github.io/tags/%E7%BA%BF%E6%BF%80%E5%85%89/"/>
     
   </entry>
   
