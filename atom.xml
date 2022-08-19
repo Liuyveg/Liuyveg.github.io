@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Liuyveg</title>
   
-  <subtitle>八 度 空 间</subtitle>
+  <subtitle>Runaway</subtitle>
   <link href="https://liuyveg.github.io/atom.xml" rel="self"/>
   
   <link href="https://liuyveg.github.io/"/>
-  <updated>2022-04-09T08:52:13.545Z</updated>
+  <updated>2022-08-19T09:03:00.525Z</updated>
   <id>https://liuyveg.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>INR</title>
+    <link href="https://liuyveg.github.io/2022/08/19/inr/"/>
+    <id>https://liuyveg.github.io/2022/08/19/inr/</id>
+    <published>2022-08-19T09:03:00.000Z</published>
+    <updated>2022-08-19T09:03:00.525Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Implict Neural Representation for 3D Reconstruction</title>
+    <link href="https://liuyveg.github.io/2022/08/19/implicit/"/>
+    <id>https://liuyveg.github.io/2022/08/19/implicit/</id>
+    <published>2022-08-19T09:03:00.000Z</published>
+    <updated>2022-08-19T09:05:12.540Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Conv-onet-ECCV-2020&quot;&gt;&lt;a href=&quot;#Conv-onet-ECCV-2020&quot; class=&quot;headerlink&quot; title=&quot;Conv_onet (ECCV 2020)&quot;&gt;&lt;/a&gt;Conv_onet (&lt;strong&gt;ECCV</summary>
+        
+      
+    
+    
+    
+    <category term="Implicit Neural" scheme="https://liuyveg.github.io/categories/Implicit-Neural/"/>
+    
+    
+    <category term="3D Reconstruction" scheme="https://liuyveg.github.io/tags/3D-Reconstruction/"/>
+    
+    <category term="Implicit Neural" scheme="https://liuyveg.github.io/tags/Implicit-Neural/"/>
+    
+    <category term="Volume Rendering" scheme="https://liuyveg.github.io/tags/Volume-Rendering/"/>
+    
+  </entry>
   
   <entry>
     <title>锯齿靶标法标定激光平面</title>
